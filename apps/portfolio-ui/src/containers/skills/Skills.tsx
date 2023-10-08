@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import "./Skills.scss";
 import SoftwareSkill from "../../components/softwareSkills/SoftwareSkill";
 import { illustration, skillsSection } from "../../portfolio";
-import { Fade } from "react-awesome-reveal";
 import skills from "../../assets/lottie/skills.json";
 import DisplayLottie from "../../components/displayLottie/DisplayLottie";
 import StyleContext from "../../store/context";
+import { motion } from "framer-motion";
 
 const Skills: React.FC = (): React.ReactElement | null => {
   const { isDark } = useContext(StyleContext);
@@ -17,7 +17,12 @@ const Skills: React.FC = (): React.ReactElement | null => {
   return (
     <div className={isDark ? "dark-mode main" : "main"} id="skills">
       <div className="skills-main-div">
-        <Fade direction={"left"} duration={1000}>
+        <motion.div
+          initial={{ x: -300, y: "-12%" }}
+          whileInView={{ x: 0, y: "-12%" }}
+          transition={{ duration: 0.9, type: "tween", stiffness: 100 }}
+          viewport={{ once: true }}
+        >
           <div className="skills-image-div">
             {illustration.animated ? (
               <DisplayLottie animationData={skills} />
@@ -28,8 +33,13 @@ const Skills: React.FC = (): React.ReactElement | null => {
               ></img>
             )}
           </div>
-        </Fade>
-        <Fade direction={"right"} duration={1000}>
+        </motion.div>
+        <motion.div
+          initial={{ x: +300 }}
+          whileInView={{ x: 0 }}
+          transition={{ duration: 0.9, type: "tween", stiffness: 100 }}
+          viewport={{ once: true }}
+        >
           <div className="skills-text-div">
             <h1
               className={isDark ? "dark-mode skills-heading" : "skills-heading"}
@@ -61,7 +71,7 @@ const Skills: React.FC = (): React.ReactElement | null => {
               ))}
             </div>
           </div>
-        </Fade>
+        </motion.div>
       </div>
     </div>
   );

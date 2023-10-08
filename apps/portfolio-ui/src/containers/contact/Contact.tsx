@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./Contact.scss";
 import SocialMedia from "../../components/socialMedia/SocialMedia";
 import { illustration, contactInfo } from "../../portfolio";
-import { Fade } from "react-awesome-reveal";
+import { motion } from "framer-motion";
 import email from "../../assets/lottie/email.json";
 import DisplayLottie from "../../components/displayLottie/DisplayLottie";
 import StyleContext from "../../store/context";
@@ -11,7 +11,12 @@ const Contact: React.FC = (): React.ReactElement => {
   const { isDark } = useContext<any>(StyleContext);
 
   return (
-    <Fade direction={"up"} duration={1000}>
+    <motion.div
+      initial={{ y: 300 }}
+      whileInView={{ y: 0 }}
+      transition={{ duration: 0.8, type: "twean", stiffness: 100 }}
+      viewport={{ once: true }}
+    >
       <div className="main contact-margin-top" id="contact">
         <div className="contact-div-main">
           <div className="contact-header">
@@ -65,7 +70,7 @@ const Contact: React.FC = (): React.ReactElement => {
           </div>
         </div>
       </div>
-    </Fade>
+    </motion.div>
   );
 };
 

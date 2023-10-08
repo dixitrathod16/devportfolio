@@ -1,13 +1,12 @@
-import React, { ReactElement, useContext, useEffect, useState } from "react";
-import { Fade } from "react-awesome-reveal";
+import React, { useContext, useEffect, useState } from "react";
 import emoji from "react-easy-emoji";
 import "./Greeting.scss";
 import SocialMedia from "../../components/socialMedia/SocialMedia";
 import Button from "../../components/button/Button";
-
 import { greeting } from "../../portfolio";
 import StyleContext from "../../store/context";
 import apiClient from "../../utils/apiClient";
+import { motion } from "framer-motion";
 
 interface GitHubProfile {
   avatarUrl: string;
@@ -36,7 +35,12 @@ const Greeting: React.FC = () => {
     <>
       {
         greeting.displayGreeting && (
-          <Fade direction={"up"} duration={1000}>
+          <motion.div
+            initial={{ y: 300 }}
+            whileInView={{ y: 0 }}
+            transition={{ duration: 1, type: "twean", stiffness: 100 }}
+            viewport={{ once: true }}
+          >
             <div className="greet-main" id="greeting">
               <div className="greeting-main">
                 <div className="greeting-text-div">
@@ -83,7 +87,7 @@ const Greeting: React.FC = () => {
                 </div>
               </div>
             </div>
-          </Fade>
+          </motion.div>
         )
       }
     </>

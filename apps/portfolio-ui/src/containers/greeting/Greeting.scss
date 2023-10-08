@@ -54,9 +54,13 @@
   height: auto;
 }
 
+.profile-image:hover {
+  scale: 1.05;
+  transition: 0.3s ease-out;
+}
+
 .profile-image {
   border-radius: 50%;
-  border: 0.5rem solid $githubProfileCardBorder;
   margin-left: auto;
   width: 100%;
   max-width: 350px;
@@ -142,7 +146,7 @@
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    max-width: 250px;
+    max-width: 200px;
     height: auto;
   }
   .profile-image:hover {

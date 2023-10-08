@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import "./WorkExperience.scss";
 import ExperienceCard from "../../components/experienceCard/ExperienceCard";
 import { workExperiences } from "../../portfolio";
-import { Fade } from "react-awesome-reveal";
 import StyleContext from "../../store/context";
 import { WorkExperience } from "../../types/interfaces";
+import { motion } from "framer-motion";
 
 const WorkExperience: React.FC = () => {
   const { isDark } = useContext(StyleContext);
@@ -12,7 +12,12 @@ const WorkExperience: React.FC = () => {
   if (workExperiences.display) {
     return (
       <div id="experience">
-        <Fade direction={"up"} duration={1000}>
+        <motion.div
+          initial={{ y: 300 }}
+          whileInView={{ y: 0 }}
+          transition={{ duration: 1, type: "twean", stiffness: 100 }}
+          viewport={{ once: true }}
+        >
           <div className="experience-container" id="workExperience">
             <div>
               <h1 className="experience-heading">Experiences</h1>
@@ -34,7 +39,7 @@ const WorkExperience: React.FC = () => {
               </div>
             </div>
           </div>
-        </Fade>
+        </motion.div>
       </div>
     );
   }

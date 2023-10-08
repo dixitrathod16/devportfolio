@@ -22,7 +22,7 @@ const buildOptions: BuildOptions = {
     ".jpg": "file",
     ".jpeg": "file",
     ".svg": "file",
-    ".webp": "file"
+    ".webp": "file",
   },
   assetNames: "assets/[name]-[hash]",
   plugins: [

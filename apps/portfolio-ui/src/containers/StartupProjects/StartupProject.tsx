@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./StartupProjects.scss";
 import { bigProjects } from "../../portfolio";
-import { Fade } from "react-awesome-reveal";
+import { motion } from "framer-motion";
 import StyleContext from "../../store/context";
 
 const StartupProject = (): React.ReactElement | null => {
@@ -22,7 +22,12 @@ const StartupProject = (): React.ReactElement | null => {
   }
 
   return (
-    <Fade direction={"up"} duration={1000}>
+    <motion.div
+      initial={{ y: 300 }}
+      whileInView={{ y: 0 }}
+      transition={{ duration: 0.8, type: "twean", stiffness: 100 }}
+      viewport={{ once: true }}
+    >
       <div className="main" id="projects">
         <div>
           <h1 className="skills-heading">{bigProjects.title}</h1>
@@ -87,7 +92,7 @@ const StartupProject = (): React.ReactElement | null => {
           </div>
         </div>
       </div>
-    </Fade>
+    </motion.div>
   );
 };
 

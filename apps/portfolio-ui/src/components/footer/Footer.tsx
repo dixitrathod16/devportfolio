@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "./Footer.scss";
-import { Fade } from "react-awesome-reveal";
+import { motion } from "framer-motion";
 import emoji from "react-easy-emoji";
 import StyleContext from "../../store/context";
 
@@ -8,7 +8,12 @@ const Footer: React.FC = () => {
   const { isDark } = useContext(StyleContext);
 
   return (
-    <Fade direction="up" duration={1000}>
+    <motion.div
+      initial={{ y: 30 }}
+      whileInView={{ y: 0 }}
+      transition={{ duration: 0.8, type: "tween", stiffness: 100 }}
+      viewport={{ once: true }}
+    >
       <div className="footer-div">
         <p className={isDark ? "dark-mode footer-text" : "footer-text"}>
           {emoji("Made with ❤️ In India 🇮🇳")}
@@ -17,7 +22,7 @@ const Footer: React.FC = () => {
           Theme by Dixit R Jain
         </p>
       </div>
-    </Fade>
+    </motion.div>
   );
 };
 

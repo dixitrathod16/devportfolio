@@ -130,15 +130,15 @@ const techStack: TechStack = {
   experience: [
     {
       Stack: "Frontend Technologies",
-      progressPercentage: "80%"
+      progressPercentage: "80"
     },
     {
       Stack: "Backend Technologies",
-      progressPercentage: "85%"
+      progressPercentage: "85"
     },
     {
       Stack: "Problem Solving",
-      progressPercentage: "85%"
+      progressPercentage: "85"
     },
   ],
 };
