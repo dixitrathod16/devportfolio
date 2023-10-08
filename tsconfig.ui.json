@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "alwaysStrict": false,
+    "noImplicitAny": false,
+    "noImplicitReturns": false,
+    "noImplicitThis": false,
+    "resolveJsonModule": true,
+    "strict": false,
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false,
+    "typeRoots": ["./node_modules/@types"],
+  },
+  "exclude": ["cdk.out"],
+  "include": ["apps/portfolio-ui"]
+}

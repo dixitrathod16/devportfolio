@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
     "target": "ES2020",
+    "esModuleInterop": true,
     "module": "commonjs",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
+    "jsx": "react",
     "declaration": true,
     "strict": true,
     "noImplicitAny": true,
@@ -20,12 +19,8 @@
     "inlineSources": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
-    "typeRoots": [
-      "./node_modules/@types"
-    ]
+    "typeRoots": ["./node_modules/@types"],
+    "resolveJsonModule": true,
   },
-  "exclude": [
-    "node_modules",
-    "cdk.out"
-  ]
+  "exclude": ["node_modules", "cdk.out"]
 }
