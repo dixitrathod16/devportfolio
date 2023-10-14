@@ -1,8 +1,6 @@
-import { Duration, RemovalPolicy, Stack, StackProps } from 'aws-cdk-lib';
-import {Bucket, BucketAccessControl} from "aws-cdk-lib/aws-s3"
+import { Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { PortFolioSite } from '../constructs/website';
-import { RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { PortFolioApi } from '../constructs/restApi';
 
 export interface DevportfolioStackProps extends StackProps {

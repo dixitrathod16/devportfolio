@@ -20,7 +20,7 @@ const Skills: React.FC = (): React.ReactElement | null => {
         <motion.div
           initial={{ x: -300, y: "-12%" }}
           whileInView={{ x: 0, y: "-12%" }}
-          transition={{ duration: 0.9, type: "tween", stiffness: 100 }}
+          transition={{ delay: 1, type: "tween", stiffness: 100 }}
           viewport={{ once: true }}
         >
           <div className="skills-image-div">

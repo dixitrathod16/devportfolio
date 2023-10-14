@@ -3,6 +3,7 @@ import {
   CfnOutput,
 } from "aws-cdk-lib";
 import {
+  Cors,
   EndpointType,
   LambdaIntegration,
   LambdaRestApi,
@@ -40,6 +41,7 @@ export class PortFolioApi extends Construct {
       },
       runtime: Runtime.NODEJS_18_X,
       tracing: Tracing.ACTIVE,
+      logRetention: 1,
     };
 
     const portfolioServiceLambda = new NodejsFunction(this, 'portfolioServiceFunction', {
@@ -48,10 +50,11 @@ export class PortFolioApi extends Construct {
         handler: 'index.handler',
         ...nodeJsFunctionProps,
         environment: {
-            MEDIUM_USER_NAME: props.mediumUserName,
-            DEV_TO_USER_NAME: props.devToUserName,
+            MEDIUM_USERNAME: props.mediumUserName,
+            DEV_TO_USERNAME: props.devToUserName,
             GITHUB_USERNAME: props.userName,
             GITHUB_TOKEN: props.token,
+            DOMAIN_NAME: props.domainName,
         }
     });
 
@@ -72,7 +75,7 @@ export class PortFolioApi extends Construct {
           tracingEnabled: true,
           metricsEnabled: true,
         },
-        description: "This service serves portfolio frontend.",
+        description: "This service serves portfolio data.",
         domainName: {
             domainName,
             certificate,
@@ -80,8 +83,10 @@ export class PortFolioApi extends Construct {
             endpointType: EndpointType.EDGE,
         },
         defaultCorsPreflightOptions: {
+            statusCode: 200,
             allowOrigins: [`https://${props.domainName}`],
-            allowMethods: ['GET'],
+            allowMethods: ['OPTIONS','GET'],
+            allowHeaders: Cors.DEFAULT_HEADERS,
         },
         disableExecuteApiEndpoint: true,
     });

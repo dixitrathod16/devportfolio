@@ -121,7 +121,7 @@ export class PortFolioSite extends Construct {
       stdio: ["ignore", process.stderr, "inherit"],
     };
 
-    const bundle = Source.asset(join(__dirname, "../apps/portfolio-ui"), {
+    const bundle = Source.asset(join(__dirname, "../../apps/portfolio-ui"), {
       bundling: {
         command: [
           "sh",
@@ -139,10 +139,7 @@ export class PortFolioSite extends Construct {
               return false;
             }
             execSync("npm run build:web", execOptions);
-            copySync(join(__dirname, "../../web"), outputDir, {
-              ...execOptions,
-              recursive: true,
-            });
+            copySync(join(__dirname, "../../web"), outputDir);
             return true;
           },
         },

@@ -18,11 +18,16 @@ const { domain, serviceSubDomain } = config.get<{
   serviceSubDomain: string;
 }>("dns");
 
+const { account, region} = config.get<{
+  account: string;
+  region: string;
+}>("aws");
+
 const app = new cdk.App();
 new DevportfolioStack(app, 'DevportfolioStack',{
     env: {
-        account: process.env.CDK_DEFAULT_ACCOUNT,
-        region: process.env.CDK_DEFAULT_REGION,
+        account,
+        region
     },
     mediumUserName,
     devToUserName,

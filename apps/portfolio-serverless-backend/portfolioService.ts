@@ -1,15 +1,11 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import axios from "axios";
 
-// const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-// const GITHUB_USERNAME = process.env.GITHUB_USERNAME;
-// const MEDIUM_USERNAME = process.env.MEDIUM_USERNAME;
-// const DEV_TO_USERNAME = process.env.DEV_TO_USERNAME;
-
-const GITHUB_TOKEN = "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";
-const GITHUB_USERNAME = "dixitrathod16";
-const MEDIUM_USERNAME = "dixitrathod16";
-const DEV_TO_USERNAME = "dixitjain";
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const GITHUB_USERNAME = process.env.GITHUB_USERNAME;
+const MEDIUM_USERNAME = process.env.MEDIUM_USERNAME;
+const DEV_TO_USERNAME = process.env.DEV_TO_USERNAME;
+const DOMAIN_NAME = process.env.DOMAIN_NAME;
 
 interface Blog {
   title: string;
@@ -43,6 +39,12 @@ const extractTextContent = (html: string): string => {
 export const handler = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
+  const headers = {
+    'Access-Control-Allow-Headers' : 'Content-Type',
+    'Access-Control-Allow-Origin': `https://${DOMAIN_NAME}`,
+    'Access-Control-Allow-Methods': 'OPTIONS,GET'
+  };
+
   try {
     if (event.httpMethod === "GET" && event.path === "/getBlogs") {
       const blogs: Blog[] = [];
@@ -79,6 +81,7 @@ export const handler = async (
       return {
         statusCode: 200,
         body: JSON.stringify(blogs),
+        headers
       };
     }
 
@@ -131,6 +134,7 @@ export const handler = async (
       return {
         statusCode: 200,
         body: JSON.stringify(data),
+        headers
       };
     }
   } catch (error) {
