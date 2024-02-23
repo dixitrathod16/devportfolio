@@ -1,15 +1,48 @@
-# Welcome to your CDK TypeScript project
+# DevPortfolio
 
-You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`DevportfolioStack`)
-which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
+DevPortfolio is a serverless, scalable, and easy-to-deploy portfolio template for developers designed to showcase your projects, skills, and experience on a modern, responsive website.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## Features
 
-## Useful commands
+- **Responsive Design:** Adapts smoothly to any screen size.
+- **Serverless Backend:** Leverages AWS services Lambda, S3, ApiGateWay, CloudFront for high scalability and availability.
+- **Modern UI/UX:** Provides a clean and engaging user experience.
+- **External Integrations:** Fetches projects from GitHub and blog posts from Medium and Dev.to.
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
+## Tech Stack
+
+- **Frontend:** React, SCSS
+- **Backend:** AWS Lambda (Serverless)
+- **Infrastructure as Code:** AWS Cloud Development Kit (CDK)
+- **CI/CD:** GitHub Actions (or specify if you use another tool)
+- **Other Tools:** Docker, Jest for testing
+
+## AWS CDK for Infrastructure
+
+The project uses AWS CDK for defining cloud resources in a programmatic and reusable way. This includes the setup for a static website hosted on S3 and served via CloudFront, and a REST API using Lambda and API Gateway.
+
+## Pre-requesites
+
+This project has an active integration with github for fetching your projects, with Medium and Dev.to for fetching your blogs. To do this follow below steps:
+
+1. Create a folder named `config` under your project root directory.
+2. Change the directory to this newly created folder and create a file called `default.json`.
+3. 
+
+## Installation
+
+To set up the project in local:
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/dixitrathod16/devportfolio.git
+   ```
+2. Install the dependencies:
+   ```
+   npm i
+   ```
+3. Run the Project:
+   ```
+   npm start
+   ```
+4. After this your website will be now up and running in your local at `http://localhost:4200`.
