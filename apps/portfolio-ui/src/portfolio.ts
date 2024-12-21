@@ -24,10 +24,10 @@ const greeting: Greeting = {
   username: "Dixit Jain",
   title: "Hi, I'm Dixit Jain",
   subTitle: emoji(
-    "A tech enthusiast with 5+ years of experience in the digital realm, specializing in AWS Cloud, React, Node.js, and TypeScript. I'm also an AWS Community Builder. Currently, I'm diving into AWS CDK. Let's connect and explore tech together! 🚀🔥"
+    "A tech enthusiast with 6+ years of experience in the digital realm, specializing in AWS Cloud, React, Node.js, and TypeScript. I'm also an AWS Community Builder. Currently, I'm diving into AWS CDK. Let's connect and explore tech together! 🚀🔥"
   ),
   resumeLink:
-    "https://drive.google.com/file/d/1fFX3G9HSL3iIi9Q1oBmgSBHitg6poUAy/view?usp=sharing", // Set to empty to hide the button
+    "https://drive.google.com/file/d/1DZ42W8NX70B-m8gNfEn4jalShH2h4x7u/view?usp=sharing", // Set to empty to hide the button
   displayGreeting: true // Set false to hide this section, defaults to true
 };
 
@@ -149,10 +149,16 @@ const workExperiences: WorkExperiences = {
   display: true,
   experience: [
     {
+      role: "Senior Software Development Engineer I",
+      company: "PowerSchool",
+      companylogo: require("./assets/images/powerschool.png"),
+      date: "Apr 2024 – Present",
+    },
+    {
       role: "Software Development Engineer II",
       company: "PowerSchool",
       companylogo: require("./assets/images/powerschool.png"),
-      date: "Apr 2022 – Present",
+      date: "Apr 2022 – March 2024",
     },
     {
       role: "Software Development Engineer I",
