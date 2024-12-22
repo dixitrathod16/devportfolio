@@ -4,32 +4,13 @@ import "./Greeting.scss";
 import SocialMedia from "../../components/socialMedia/SocialMedia";
 import Button from "../../components/button/Button";
 import { greeting } from "../../portfolio";
-import StyleContext from "../../store/context";
-import apiClient from "../../utils/apiClient";
+import { StyleContext } from "../../store/context";
 import { motion } from "framer-motion";
-
-interface GitHubProfile {
-  avatarUrl: string;
-  name: string;
-}
+import { GithubProfileContext } from "../../store/context";
 
 const Greeting: React.FC = () => {
   const { isDark } = useContext<any>(StyleContext);
-  const [githubProfile, setGitHubProfile] = useState<GitHubProfile | null>(
-    null
-  );
-
-  useEffect(() => {
-    apiClient
-      .get('/getGithubProfile')
-      .then((response) => {
-        setGitHubProfile(response.data.data.user);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  const { githubProfile } = useContext(GithubProfileContext);
 
   return (
     <>
@@ -82,6 +63,8 @@ const Greeting: React.FC = () => {
                       src={githubProfile.avatarUrl}
                       alt={githubProfile.name}
                       className="profile-image"
+                      loading="lazy"
+                      decoding="async"
                     />
                   )}
                 </div>

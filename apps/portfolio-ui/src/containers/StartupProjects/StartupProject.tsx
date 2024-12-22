@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./StartupProjects.scss";
 import { bigProjects } from "../../portfolio";
 import { motion } from "framer-motion";
-import StyleContext from "../../store/context";
+import { StyleContext } from "../../store/context";
 
 const StartupProject = (): React.ReactElement | null => {
   const { isDark } = useContext(StyleContext);

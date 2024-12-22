@@ -2,7 +2,7 @@ import React, { ReactElement, useContext } from "react";
 import "./Achievement.scss";
 import AchievementCard from "../../components/achievementCard/AchievementCard";
 import { achievementSection } from "../../portfolio";
-import StyleContext from "../../store/context";
+import { StyleContext } from "../../store/context";
 import { motion } from "framer-motion";
 
 const Achievement = (): ReactElement => {

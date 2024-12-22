@@ -2,7 +2,7 @@ import React, { ReactElement, useContext } from "react";
 import "./SplashScreen.scss";
 import DisplayLottie from "../../components/displayLottie/DisplayLottie";
 import { greeting, splashScreen } from "../../portfolio";
-import StyleContext from "../../store/context";
+import { StyleContext } from "../../store/context";
 
 const SplashScreen = (): React.ReactElement => {
   const { isDark } = useContext(StyleContext);

@@ -5,7 +5,7 @@ import { illustration, contactInfo } from "../../portfolio";
 import { motion } from "framer-motion";
 import email from "../../assets/lottie/email.json";
 import DisplayLottie from "../../components/displayLottie/DisplayLottie";
-import StyleContext from "../../store/context";
+import { StyleContext } from "../../store/context";
 
 const Contact: React.FC = (): React.ReactElement => {
   const { isDark } = useContext<any>(StyleContext);

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'https://api.dixitjain.dev';
+const baseUrl = process.env.API_BASEURL;
 
 const apiClient = axios.create({
   baseURL: baseUrl,

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Headroom from "react-headroom";
 import "./Header.scss";
 import ToggleSwitch from "../toggleSwitch/ToggleSwitch";
-import StyleContext from "../../store/context";
+import { StyleContext } from "../../store/context";
 import {
   greeting,
   workExperiences,

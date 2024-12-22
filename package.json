@@ -8,7 +8,9 @@
   "scripts": {
     "build": "npm run build:web",
     "clean": "rimraf cdk.out coverage",
-    "build:web": "ts-node esbuild.ts build",
+    "build:web": "NODE_ENV=prod ts-node esbuild.ts build",
+    "bootstrap": "NODE_ENV=prod cdk bootstrap",
+    "deploy": "NODE_ENV=prod cdk deploy",
     "start": "nodemon -P tsconfig.ui.json esbuild.ts",
     "fetch": "ts-node ./apps/portfolio-serverless-backend/portfolio.ts",
     "watch": "tsc -w",

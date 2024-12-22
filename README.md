@@ -4,79 +4,174 @@ DevPortfolio is a serverless, scalable, and easy-to-deploy portfolio template fo
 
 ## Features
 
-- **Responsive Design:** Adapts smoothly to any screen size.
-- **Serverless Backend:** Leverages AWS services Lambda, S3, ApiGateWay, CloudFront for high scalability and availability.
-- **Modern UI/UX:** Provides a clean and engaging user experience.
-- **External Integrations:** Fetches projects from GitHub and blog posts from Medium and Dev.to.
+- **Responsive Design:** Adapts smoothly to any screen size
+- **Serverless Backend:** Leverages AWS services (Lambda, S3, ApiGateway, CloudFront) for high scalability and availability
+- **Modern UI/UX:** Clean and engaging user experience with React-based frontend
+- **External Integrations:** Fetches projects from GitHub and blog posts from Medium and Dev.to
+- **Infrastructure as Code:** AWS CDK for automated resource provisioning
+- **Build System:** Efficient build process using esbuild
+
+## Project Structure
+
+```
+devportfolio/
+├── apps/                    # Main application code
+│   ├── portfolio-ui/        # React frontend application
+│   └── portfolio-serverless-backend/  # AWS Lambda backend
+├── web/                     # Built frontend assets
+├── config/                  # Configuration files
+├── lib/                     # CDK infrastructure code
+├── bin/                     # CDK app entry point
+└── esbuild.ts              # Build configuration
+```
 
 ## Tech Stack
 
-- **Frontend:** React, SCSS
-- **Backend:** AWS Lambda (Serverless)
-- **Infrastructure as Code:** AWS Cloud Development Kit (CDK)
-- **CI/CD:** GitHub Actions (or specify if you use another tool)
-- **Other Tools:** Docker, Jest for testing
+- **Frontend:**
+  - React
+  - SCSS
+  - Modern web assets (PWA ready with manifest.json)
+- **Backend:**
+  - AWS Lambda (Serverless)
+  - API Gateway
+- **Infrastructure:**
+  - AWS CDK (Infrastructure as Code)
+  - S3 for static hosting
+  - CloudFront for content delivery
+- **Build Tools:**
+  - esbuild for fast bundling
+  - TypeScript for type safety
+- **Testing:** Jest
 
-## AWS CDK for Infrastructure
+## Prerequisites
 
-The project uses AWS CDK for defining cloud resources in a programmatic and reusable way. This includes the setup for a static website hosted on S3 and served via CloudFront, and a REST API using Lambda and API Gateway.
+1. Node.js and npm installed
+2. AWS Account (for deployment)
+3. Domain name (optional, for hosting)
+4. Required API access:
+   - GitHub Personal Access Token
+   - Medium account
+   - Dev.to account
 
-## Pre-requesites
+## Configuration
 
-This project has an active integration with github for fetching your projects, with Medium and Dev.to for fetching your blogs. To have functionality working this follow below steps:
+1. Create a `config` directory in the project root
+2. Add `default.json` in the config directory with the following structure to run locally:
 
-1. As a pre-requisite have a domain registered where you would want to host this project (This is optional if you do not want to host your project in AWS and just want to run it in local).
-2. Once your have your own domain, you need to log into to AWS Account and create a hostedZone with the newly registered domain. (Again, this is also optional step and is applicable only if you really want to host your site to AWS).
-3. Make sure you have AWS CLI installed and are credentialed with your AWS Account to which you want to deploy. (This is also optional step and is only to deploy your resources to AWS cloud.
-4. Create a folder named `config` under your project root directory.
-5. Change the directory to this newly created folder and create a file called `default.json`.
-6. Now the file should have below environment varibales set:
-   ```
-   {
-    "blogs": {
-      "mediumUserName": "<paste your medium username here>",
-      "devToUserName": "<paste your dev.to username here>"
-    },
-    "gitHubProfile": {
-      "userName": "<paste your github profile name here>",
-      "token": "<paste your github personal access token here>"
-    },
-    "dns": {
-      "domain": "<paste your domain name here>",
-      "serviceSubDomain": "api"
-    },
-    "aws": {
-      "account": "<paste your AWS acount id to which you want to deploy your project>",
-      "region": "us-east-1"
-    }
-   }
-   ```
+```json
+{
+  "blogs": {
+    "mediumUserName": "<your-medium-username>",
+    "devToUserName": "<your-dev.to-username>"
+  },
+  "gitHubProfile": {
+    "userName": "<your-github-username>",
+    "token": "<your-github-personal-access-token>"
+  },
+  "dns": {
+    "domain": "localhost:4200",
+    "serviceSubDomain": ""
+  }
+}
+```
 
-## Installation
+3. Add `production.json` in the config directory with the following structure to deploy to AWS:
 
-To set up the project in local:
+```json
+{
+  "blogs": {
+    "mediumUserName": "<your-medium-username>",
+    "devToUserName": "<your-dev.to-username>"
+  },
+  "gitHubProfile": {
+    "userName": "<your-github-username>",
+    "token": "<your-github-personal-access-token>"
+  },
+  "dns": {
+    "domain": "<your-domain-name>",
+    "serviceSubDomain": "api"
+  },
+  "aws": {
+    "account": "<your-aws-account-id>",
+    "region": "<your-aws-region>"
+  }
+}
+```
+
+## Local Development
 
 1. Clone the repository:
-   ```
+
+   ```bash
    git clone https://github.com/dixitrathod16/devportfolio.git
    ```
-2. Install the dependencies:
+
+2. Install dependencies:
+
+   ```bash
+   npm install
    ```
-   npm i
-   ```
-3. Run the Project:
-   ```
+
+3. Start the development server:
+   ```bash
    npm start
    ```
-4. After this your website will be now up and running in your local at `http://localhost:4200`.
 
-## Deployment to AWS
+The application will be available at `http://localhost:4200`
 
-1. Bootstrap AWS CDK (if not already done) using below command:
+## AWS Deployment
+
+1. Ensure AWS CLI is installed and configured with your credentials
+
+2. Bootstrap AWS CDK (first-time only):
+
+   ```bash
+   npm run bootstrap
    ```
-   cdk bootstrap
+
+3. Deploy the application:
+   ```bash
+   npm run deploy
    ```
-2. To deploy this project to your AWS Account and make it live, use below command
-   ```
-   cdk deploy
-   ```
+
+## Additional Notes
+
+- The project uses esbuild for fast and efficient bundling
+- Frontend assets are optimized and include PWA support
+- Backend is fully serverless with pay-per-use pricing
+- CDK deployment creates all necessary AWS resources automatically
+
+## Customization
+
+The portfolio can be customized by modifying the `apps/portfolio-ui/src/portfolio.ts` file. This file contains all the configuration for your personal portfolio including:
+
+### Basic Information
+- **Splash Screen:** Customize the animation shown during initial load
+- **Greeting:** Update your name, title, subtitle, and resume link
+- **Social Media:** Configure links to your GitHub, LinkedIn, Gmail, Facebook, Medium, Instagram, and Dev.to profiles
+
+### Professional Information
+- **Skills Section:** List your technical skills and software proficiencies
+- **Education:** Add your educational background with school logos and descriptions
+- **Tech Stack:** Display your proficiency levels in different technology stacks
+- **Work Experience:** List your professional experience with company logos and dates
+- **Open Source:** Configure GitHub profile display
+- **Projects:** Showcase your major projects with descriptions and links
+- **Achievements:** Add certifications, awards, and other accomplishments
+- **Blog Section:** Enable/disable Medium and Dev.to blog integration
+- **Contact Information:** Update your contact details
+
+To customize:
+1. Open `apps/portfolio-ui/src/portfolio.ts`
+2. Update the relevant sections with your information
+3. Set `display: false` for any sections you want to hide
+4. For icons, use Font Awesome class names (referenced in the file)
+5. Add your images to the `assets/images` directory and update image paths accordingly
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is open source and available under the MIT License.

@@ -1,12 +1,6 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import axios from "axios";
 
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const GITHUB_USERNAME = process.env.GITHUB_USERNAME;
-const MEDIUM_USERNAME = process.env.MEDIUM_USERNAME;
-const DEV_TO_USERNAME = process.env.DEV_TO_USERNAME;
-const DOMAIN_NAME = process.env.DOMAIN_NAME;
-
 interface Blog {
   title: string;
   link: string;
@@ -39,8 +33,14 @@ const extractTextContent = (html: string): string => {
 export const handler = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
+  const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+  const GITHUB_USERNAME = process.env.GITHUB_USERNAME;
+  const MEDIUM_USERNAME = process.env.MEDIUM_USERNAME;
+  const DEV_TO_USERNAME = process.env.DEV_TO_USERNAME;
+  const DOMAIN_NAME = process.env.DOMAIN_NAME;
+
   const headers = {
-    'Access-Control-Allow-Headers' : 'Content-Type',
+    'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Origin': `https://${DOMAIN_NAME}`,
     'Access-Control-Allow-Methods': 'OPTIONS,GET'
   };
