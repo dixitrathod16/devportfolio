@@ -75,7 +75,7 @@ devportfolio/
 }
 ```
 
-3. Add `production.json` in the config directory with the following structure to deploy to AWS:
+3. Add `prod.json` in the config directory with the following structure to deploy to AWS:
 
 ```json
 {
@@ -119,28 +119,6 @@ devportfolio/
 
 The application will be available at `http://localhost:4200`
 
-## AWS Deployment
-
-1. Ensure AWS CLI is installed and configured with your credentials
-
-2. Bootstrap AWS CDK (first-time only):
-
-   ```bash
-   npm run bootstrap
-   ```
-
-3. Deploy the application:
-   ```bash
-   npm run deploy
-   ```
-
-## Additional Notes
-
-- The project uses esbuild for fast and efficient bundling
-- Frontend assets are optimized and include PWA support
-- Backend is fully serverless with pay-per-use pricing
-- CDK deployment creates all necessary AWS resources automatically
-
 ## Customization
 
 The portfolio can be customized by modifying the `apps/portfolio-ui/src/portfolio.ts` file. This file contains all the configuration for your personal portfolio including:
@@ -167,6 +145,28 @@ To customize:
 3. Set `display: false` for any sections you want to hide
 4. For icons, use Font Awesome class names (referenced in the file)
 5. Add your images to the `assets/images` directory and update image paths accordingly
+
+## AWS Deployment
+
+1. Ensure AWS CLI is installed and configured with your credentials
+
+2. Bootstrap AWS CDK (first-time only):
+
+   ```bash
+   npm run bootstrap
+   ```
+
+3. Deploy the application:
+   ```bash
+   npm run deploy
+   ```
+
+## Additional Notes
+
+- The project uses esbuild for fast and efficient bundling
+- Frontend assets are optimized and include PWA support
+- Backend is fully serverless with pay-per-use pricing
+- CDK deployment creates all necessary AWS resources automatically
 
 ## Contributing
 
