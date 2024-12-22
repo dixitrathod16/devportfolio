@@ -9,9 +9,7 @@ import { AchievementSection, BigProjects, BlogSection, ContactInfo, EducationInf
 // Splash Screen
 
 const splashScreen: SplashScreen = {
-  enabled: true, // set false to disable splash screen
   animation: splashAnimation,
-  duration: 2000 // Set animation duration as per your animation
 };
 
 // Summary And Greeting Section
@@ -21,8 +19,8 @@ const illustration: Illustration = {
 };
 
 const greeting: Greeting = {
-  username: "Dixit Jain",
-  title: "Hi, I'm Dixit Jain",
+  username: "Dixit R Jain",
+  title: "Hi, I'm Dixit R Jain",
   subTitle: emoji(
     "A tech enthusiast with 6+ years of experience in the digital realm, specializing in AWS Cloud, React, Node.js, and TypeScript. I'm also an AWS Community Builder. Currently, I'm diving into AWS CDK. Let's connect and explore tech together! 🚀🔥"
   ),

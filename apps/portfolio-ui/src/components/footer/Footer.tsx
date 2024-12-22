@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./Footer.scss";
 import { motion } from "framer-motion";
 import emoji from "react-easy-emoji";
-import StyleContext from "../../store/context";
+import { StyleContext } from "../../store/context";
 
 const Footer: React.FC = () => {
   const { isDark } = useContext(StyleContext);

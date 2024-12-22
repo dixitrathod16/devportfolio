@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import emoji from "react-easy-emoji";
-import StyleContext from "../../store/context";
+import { StyleContext } from "../../store/context";
 import "./ToggleSwitch.scss";
 
 const ToggleSwitch: React.FC = () => {

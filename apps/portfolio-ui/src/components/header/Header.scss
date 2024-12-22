@@ -55,6 +55,7 @@
   flex: none;
   float: left;
   font-size: 1.5em;
+  word-spacing: 10px;
   text-decoration: none;
   margin-top: 10px;
   line-height: normal;
@@ -179,4 +180,13 @@
   .header {
     font-size: 12px;
   }
+  .header .logo {
+    font-size: 1.2em;
+  }
 }
+@media (max-width: 768px) {
+  .header .logo {
+    font-size: 1.2em;
+  }
+}
+

@@ -4,7 +4,7 @@ import SoftwareSkill from "../../components/softwareSkills/SoftwareSkill";
 import { illustration, skillsSection } from "../../portfolio";
 import skills from "../../assets/lottie/skills.json";
 import DisplayLottie from "../../components/displayLottie/DisplayLottie";
-import StyleContext from "../../store/context";
+import { StyleContext } from "../../store/context";
 import { motion } from "framer-motion";
 
 const Skills: React.FC = (): React.ReactElement | null => {

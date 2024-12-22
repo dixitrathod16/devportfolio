@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, ReactElement } from "react";
 import "./Blog.scss";
 import BlogCard from "../../components/blogCard/BlogCard";
 import { blogSection } from "../../portfolio";
-import StyleContext from "../../store/context";
+import { StyleContext } from "../../store/context";
 import apiClient from "../../utils/apiClient";
 import { motion } from "framer-motion";
 

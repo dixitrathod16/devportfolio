@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./WorkExperience.scss";
 import ExperienceCard from "../../components/experienceCard/ExperienceCard";
 import { workExperiences } from "../../portfolio";
-import StyleContext from "../../store/context";
+import { StyleContext } from "../../store/context";
 import { WorkExperience } from "../../types/interfaces";
 import { motion } from "framer-motion";
 

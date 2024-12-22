@@ -5,14 +5,34 @@ import path from "path";
 import { handler as portfolioFunction } from "./apps/portfolio-serverless-backend/portfolioService";
 import { APIGatewayProxyEvent } from "aws-lambda/trigger/api-gateway-proxy";
 import copyStaticFiles from 'esbuild-copy-static-files';
+import config from 'config';
+
 const clients: ServerResponse[] = [];
 
 const mode = process.argv[2];
 const env = mode === "build" ? "production" : "development";
 
+const { mediumUserName, devToUserName } = config.get<{
+  mediumUserName: string;
+  devToUserName: string;
+}>("blogs");
+
+const { userName, token } = config.get<{
+  userName: string;
+  token: string;
+}>("gitHubProfile");
+
+const { domain, serviceSubDomain } = config.get<{
+  domain: string;
+  serviceSubDomain: string;
+}>("dns");
+
 const buildOptions: BuildOptions = {
   bundle: true,
-  define: { "process.env.NODE_ENV": `"${env}"` }, // must be double-quoted
+  define: {
+    "process.env.NODE_ENV": `"${env}"`,
+    "process.env.API_BASEURL": serviceSubDomain ? `"https://${serviceSubDomain}.${domain}"` : `"http://${domain}"`,
+  }, // must be double-quoted
   entryPoints: ["apps/portfolio-ui/src/index.tsx"],
   treeShaking: true,
   minify: true,
@@ -86,6 +106,12 @@ export const run = async (mode: string): Promise<BuildResult | Server> => {
             ? "/getBlogs"
             : "/getGithubProfile",
         } as APIGatewayProxyEvent;
+
+        process.env.GITHUB_TOKEN = token;
+        process.env.GITHUB_USERNAME = userName;
+        process.env.MEDIUM_USERNAME = mediumUserName;
+        process.env.DEV_TO_USERNAME = devToUserName;
+        process.env.DOMAIN_NAME = domain;
 
         const lambdaResponse = await portfolioFunction(event);
         res.writeHead(lambdaResponse.statusCode, {

@@ -1,8 +1,6 @@
 // Splash Screen
 export interface SplashScreen {
-  enabled: boolean;
   animation: any; // You should specify the type for the animation
-  duration: number;
 }
 
 // Illustration
