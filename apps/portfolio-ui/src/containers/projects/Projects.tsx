@@ -26,8 +26,9 @@ const Projects: React.FC = (): React.ReactElement => {
           <motion.div
             initial={{ y: 300 }}
             whileInView={{ y: 0 }}
-            transition={{ duration: 1, type: "twean", stiffness: 100 }}
+            transition={{ duration: 1, type: "tween", stiffness: 100 }}
             viewport={{ once: true }}
+            style={{ willChange: "transform, opacity" }}
           >
           <div className="main" id="opensource">
             <h1 className="project-title">Open Source Projects</h1>

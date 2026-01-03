@@ -9,6 +9,9 @@
     "strictNullChecks": false,
     "strictPropertyInitialization": false,
     "typeRoots": ["./node_modules/@types"],
+    "jsx": "react",
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
   "exclude": ["cdk.out"],
   "include": ["apps/portfolio-ui"]

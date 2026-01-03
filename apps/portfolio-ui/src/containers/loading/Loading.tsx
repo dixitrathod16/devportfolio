@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import "./loading.scss";
 
 const Loading = (): React.ReactElement => {
-  const renderCircles = (): React.ReactNodeArray => {
+  const renderCircles = (): React.ReactNode[] => {
     const circles: React.ReactNode[] = [];
     for (let i = 1; i <= 12; i++) {
       circles.push(<div key={`circle${i}`} className={`sk-circle${i} sk-child`} />);

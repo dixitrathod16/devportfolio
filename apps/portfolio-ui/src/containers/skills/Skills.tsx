@@ -22,6 +22,7 @@ const Skills: React.FC = (): React.ReactElement | null => {
           whileInView={{ x: 0, y: "-12%" }}
           transition={{ delay: 1, type: "tween", stiffness: 100 }}
           viewport={{ once: true }}
+          style={{ willChange: "transform, opacity" }}
         >
           <div className="skills-image-div">
             {illustration.animated ? (
@@ -39,6 +40,7 @@ const Skills: React.FC = (): React.ReactElement | null => {
           whileInView={{ x: 0 }}
           transition={{ duration: 0.9, type: "tween", stiffness: 100 }}
           viewport={{ once: true }}
+          style={{ willChange: "transform, opacity" }}
         >
           <div className="skills-text-div">
             <h1

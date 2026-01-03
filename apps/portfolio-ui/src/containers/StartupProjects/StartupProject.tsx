@@ -25,8 +25,9 @@ const StartupProject = (): React.ReactElement | null => {
     <motion.div
       initial={{ y: 300 }}
       whileInView={{ y: 0 }}
-      transition={{ duration: 0.8, type: "twean", stiffness: 100 }}
+      transition={{ duration: 0.8, type: "tween", stiffness: 100 }}
       viewport={{ once: true }}
+      style={{ willChange: "transform, opacity" }}
     >
       <div className="main" id="projects">
         <div>
