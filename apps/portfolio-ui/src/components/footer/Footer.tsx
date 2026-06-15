@@ -13,6 +13,7 @@ const Footer: React.FC = () => {
       whileInView={{ y: 0 }}
       transition={{ duration: 0.8, type: "tween", stiffness: 100 }}
       viewport={{ once: true }}
+      style={{ willChange: "transform, opacity" }}
     >
       <div className="footer-div">
         <p className={isDark ? "dark-mode footer-text" : "footer-text"}>

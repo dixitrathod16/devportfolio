@@ -14,6 +14,7 @@ const StackProgress: React.FC = (): React.ReactElement | null => {
           whileInView={{ x: 0 }}
           transition={{ duration: 0.9, type: "tween", stiffness: 100 }}
           viewport={{ once: true }}
+          style={{ willChange: "transform, opacity" }}
           className="skills-bar">
           <h1 className="skills-heading">Proficiency</h1>
           {techStack.experience.map((exp, i) => {
@@ -35,6 +36,7 @@ const StackProgress: React.FC = (): React.ReactElement | null => {
           whileInView={{ x: 0 }}
           transition={{ duration: 0.9, type: "tween", stiffness: 100 }}
           viewport={{ once: true }}
+          style={{ willChange: "transform, opacity" }}
           className="skills-image"
         >
           {illustration.animated ? (

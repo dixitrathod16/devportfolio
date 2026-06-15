@@ -14,8 +14,9 @@ const Contact: React.FC = (): React.ReactElement => {
     <motion.div
       initial={{ y: 300 }}
       whileInView={{ y: 0 }}
-      transition={{ duration: 0.8, type: "twean", stiffness: 100 }}
+      transition={{ duration: 0.8, type: "tween", stiffness: 100 }}
       viewport={{ once: true }}
+      style={{ willChange: "transform, opacity" }}
     >
       <div className="main contact-margin-top" id="contact">
         <div className="contact-div-main">
